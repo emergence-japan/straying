@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Straying</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/survey.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body id="welcome">
+
+  <div id="language-switcher-container" style="position: absolute; top: 20px; right: 20px; z-index: 1000;"></div>
+
+  <div class="screen active">
+    <div class="content-wrapper" style="max-width: 650px;">
+      <h1 class="title" data-i18n="title">Straying</h1>
+      <p class="tagline" style="margin-bottom: var(--spacing-md);" data-i18n="tagline">コンテンツを選択してください。</p>
+
+      <div class="navigation-buttons" style="display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-top: 1rem;">
+          <button id="goToPreSurvey" class="btn-secondary" style="width: 100%;" onclick="location.href='pre-survey.html'" data-i18n="preSurvey">事前アンケートへ</button>
+          <button id="goToGame" class="btn-secondary" style="width: 100%;" onclick="location.href='game.html'" data-i18n="game">ゲーム開始</button>
+          <button id="goToPostSurvey" class="btn-secondary" style="width: 100%;" onclick="location.href='post-survey.html'" data-i18n="postSurvey">事後アンケートへ</button>
+      </div>
+
+  </div>
+</div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/language-switcher.js"></script>
+  <script>
+    // Translations
+    const translations = {
+      ja: {
+        title: "Straying",
+        tagline: "コンテンツを選択してください。",
+        preSurvey: "事前アンケートへ",
+        game: "体験を開始する",
+        postSurvey: "事後アンケートへ",
+        formAnonymousCode: "匿名コード",
+        formAnonymousCodeHelp: "後のアンケートで個人を特定するために使用します。半角英数字で入力してください。",
+        formGender: "性別",
+        formPleaseSelect: "選択してください",
+        formMale: "男性",
+        formFemale: "女性",
+        formOther: "その他",
+        formPreferNotToAnswer: "回答しない",
+        formAge: "年齢",
+        formYearsOld: "歳",
+        formBtnSave: "入力内容を確定する"
+      },
+      en: {
+        title: "Straying",
+        tagline: "Please select content.",
+        preSurvey: "Go to Pre-Survey",
+        game: "Start Experience",
+        postSurvey: "Go to Post-Survey",
+        formAnonymousCode: "Anonymous Code",
+        formAnonymousCodeHelp: "Used to identify you in later surveys. Please enter alphanumeric characters.",
+        formGender: "Gender",
+        formPleaseSelect: "Please select",
+        formMale: "Male",
+        formFemale: "Female",
+        formOther: "Other",
+        formPreferNotToAnswer: "Prefer not to answer",
+        formAge: "Age",
+        formYearsOld: "years old",
+        formBtnSave: "Confirm and proceed"
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      window.i18n = new I18n(translations);
+      // Initialize language switcher
+      const switcherContainer = document.getElementById('language-switcher-container');
+      const switcher = new LanguageSwitcher(window.i18n, switcherContainer);
+      switcher.render();
+      
+      // Apply initial translations
+      window.i18n.updateDOM();
+    });
+  </script>
+</body>
+</html>

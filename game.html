@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="gameTitle">Straying</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/survey.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+      /* iframe用の特別スタイル */
+      .iframe-container {
+          flex-grow: 1;
+          border: 2px solid var(--color-primary);
+          border-radius: 8px;
+          overflow: hidden;
+          background: white;
+          width: 100%;
+          min-height: 500px;
+      }
+      .game-content-wrapper {
+           max-width: 95%;
+           width: 1200px;
+           height: 90vh;
+           display: flex;
+           flex-direction: column;
+      }
+      /* モバイル対応 */
+      @media (max-width: 768px) {
+        .game-content-wrapper {
+          height: 85vh;
+          width: 100%;
+          padding: 10px;
+        }
+      }
+  </style>
+</head>
+<body>
+
+  <div id="language-switcher-container" style="position: absolute; top: 20px; right: 20px; z-index: 1000;"></div>
+
+  <!-- Participant Input Screen -->
+  <section id="participant-screen" class="screen">
+    <div class="content-wrapper">
+      <h2 data-i18n="participantInfoHeader">参加者情報の入力</h2>
+      <div id="participant-input-container"></div>
+    </div>
+  </section>
+
+  <!-- Welcome Screen -->
+  <section id="welcome" class="screen active">
+    <div class="content-wrapper">
+      <h1 class="title" data-i18n="gameTitle">Straying</h1>
+      <div id="welcome-message" style="margin-bottom: 1.5rem;"></div>
+      <button class="btn-primary" onclick="navigateTo('game-play')" data-i18n="btnStart">
+        体験を開始する
+      </button>
+    </div>
+  </section>
+
+  <!-- Game Play Screen (iframe) -->
+  <section id="game-play" class="screen">
+    <div class="content-wrapper game-content-wrapper">
+      <h2 data-i18n="gameTitle" style="margin-bottom: 10px;">Straying</h2>
+      
+      <div class="iframe-container">
+        <iframe src="https://solventer.jp/Straying" 
+                style="width: 100%; height: 100%; border: none;"
+                allow="fullscreen">
+        </iframe>
+      </div>
+
+      <div class="form-actions" style="margin-top: 15px; text-align: center;">
+        <p style="color: white; margin-bottom: 10px;" data-i18n="gameFinishPrompt">体験が終わったら、下のボタンを押してトップページに戻ってください。</p>
+        <button class="btn-primary" onclick="location.href='index.html'" data-i18n="btnToTop">
+          トップページへ戻る
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/participant.js"></script>
+  <script src="js/input-form.js"></script>
+  <script src="js/submit.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/language-switcher.js"></script>
+  
+  <script>
+    // Translations for Game Page
+    const gameTranslations = {
+      ja: {
+        gameTitle: "Straying",
+        btnStart: "体験を開始する",
+        participantInfoHeader: "参加者情報の入力",
+        gameFinishPrompt: "体験が終わったら、下のボタンを押してトップページに戻ってください。",
+        btnToTop: "トップページへ戻る",
+        welcomeMsg: "ようこそ, {name} さん",
+        formAnonymousCode: "匿名コード",
+        formAnonymousCodeHelp: "後のアンケートで個人を特定するために使用します。半角英数字で入力してください。",
+        formGender: "性別",
+        formPleaseSelect: "選択してください",
+        formMale: "男性",
+        formFemale: "女性",
+        formOther: "その他",
+        formPreferNotToAnswer: "回答しない",
+        formAge: "年齢",
+        formYearsOld: "歳",
+        formBtnSave: "入力内容を確定する"
+      },
+      en: {
+        gameTitle: "Straying",
+        btnStart: "Start Experience",
+        participantInfoHeader: "Participant Information",
+        gameFinishPrompt: "When you are finished, please click the button below to return to the top page.",
+        btnToTop: "Return to Top Page",
+        welcomeMsg: "Welcome, {name}",
+        formAnonymousCode: "Anonymous Code",
+        formAnonymousCodeHelp: "Used to identify you in later surveys. Please enter alphanumeric characters.",
+        formGender: "Gender",
+        formPleaseSelect: "Please select",
+        formMale: "Male",
+        formFemale: "Female",
+        formOther: "Other",
+        formPreferNotToAnswer: "Prefer not to answer",
+        formAge: "Age",
+        formYearsOld: "years old",
+        formBtnSave: "Confirm and proceed"
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      window.i18n = new I18n(gameTranslations);
+      const switcherContainer = document.getElementById('language-switcher-container');
+      const switcher = new LanguageSwitcher(window.i18n, switcherContainer);
+      switcher.render();
+      window.i18n.updateDOM();
+
+      const container = document.getElementById('participant-input-container');
+      const participantScreen = document.getElementById('participant-screen');
+
+      // 参加者情報がない場合は入力画面を表示
+      if (!getParticipant()) {
+        participantScreen.classList.add('active');
+        participantScreen.style.display = 'block';
+      } else {
+         participantScreen.classList.remove('active');
+         participantScreen.style.display = 'none';
+      }
+
+      requireParticipantOrInput(container, () => {
+        participantScreen.classList.remove('active');
+        participantScreen.style.display = 'none';
+        
+        // Skip welcome screen and go directly to game-play
+        showSection('game-play');
+
+        if (typeof initializeApp === 'function') {
+          initializeApp();
+        }
+
+        const participant = getParticipant();
+        // Skip welcome message update since we're skipping that screen
+      });
+    });
+  </script>
+</body>
+</html>

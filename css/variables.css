@@ -1,0 +1,23 @@
+:root {
+  /* Category Colors (for later phases) */
+  --color-items: #4CAF50;      /* Green */
+  --color-person: #E91E63;     /* Pink */
+  --color-places: #2196F3;     /* Blue */
+  --color-events: #FFC107;     /* Yellow */
+  --color-goals: #9C27B0;      /* Purple */
+  
+  /* UI Colors */
+  --color-primary: #6366F1;    /* Indigo */
+  --color-secondary: #8B5CF6;  /* Violet */
+  --color-success: #10B981;    /* Green */
+  --color-text-dark: #1F2937;  /* Gray-800 */
+  --color-text-light: #F9FAFB; /* Gray-50 */
+  --color-background: #111827; /* Dark background for fantasy theme */
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+}

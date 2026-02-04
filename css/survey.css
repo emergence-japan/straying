@@ -1,0 +1,354 @@
+/* Survey Wrapper */
+.survey-wrapper {
+  max-width: 900px;
+}
+
+.survey-intro {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  border-left: 4px solid var(--color-primary);
+}
+
+/* Progress Indicator */
+.survey-progress {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #c7d2fe;
+}
+
+/* Survey Sections */
+.survey-section {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-title {
+  color: var(--color-primary);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--color-primary);
+  padding-bottom: 0.5rem;
+}
+
+.section-instructions {
+  background: rgba(99, 102, 241, 0.1);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-left: 3px solid var(--color-primary);
+}
+
+/* Question Groups */
+.question-group {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.question-group:last-child {
+  border-bottom: none;
+}
+
+.question-label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+}
+
+.question-label.required::after {
+  content: " *";
+  color: #ef4444;
+}
+
+.question-help {
+  font-size: 0.95rem;
+  color: #c7d2fe;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.input-hint {
+  font-size: 0.85rem;
+  color: #a5b4fc;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+/* Text Inputs */
+.text-input,
+.number-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-family: 'Lora', serif;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  color: var(--color-text-light);
+  transition: all 0.3s ease;
+}
+
+.text-input:focus,
+.number-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.age-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center; /* 追加：子要素を中央揃えにする */
+}
+
+.age-input-wrapper .number-input {
+  max-width: 100px;
+}
+
+.input-suffix {
+  font-size: 1.1rem;
+  color: #c7d2fe;
+}
+
+.text-input-inline {
+  max-width: 200px;
+  padding: 0.5rem;
+  font-size: 0.95rem;
+  margin-left: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.25rem;
+  color: var(--color-text-light);
+}
+
+/* Radio and Checkbox Groups */
+.radio-group,
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.radio-option,
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.radio-option:hover,
+.checkbox-option:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.radio-option input[type="radio"],
+.checkbox-option input[type="checkbox"] {
+  margin-right: 0.75rem;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.radio-option:has(input:checked),
+.checkbox-option:has(input:checked) {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: var(--color-primary);
+}
+
+/* Likert Scale */
+.likert-question {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0.5rem;
+}
+
+.likert-scale {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.scale-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #c7d2fe;
+  min-width: 120px;
+}
+
+.scale-options {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.scale-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.scale-option input[type="radio"] {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  margin-bottom: 0.25rem;
+}
+
+.scale-number {
+  font-size: 0.85rem;
+  color: #a5b4fc;
+}
+
+.scale-option:has(input:checked) .scale-number {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* Validation Messages */
+.validation-message {
+  color: #ef4444;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  display: none;
+}
+
+.validation-message.show {
+  display: block;
+}
+
+/* Form Actions */
+.form-actions {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-actions .btn-primary {
+  font-size: 1.2rem;
+  padding: 1.25rem 2.5rem;
+}
+
+/* Custom styles for index.html select element */
+.form-select {
+  background: rgba(255, 255, 255, 0.1); /* .text-input と同じ背景色 */
+  color: var(--color-text-light); /* 文字色は白を維持 */
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ドロップダウンメニューが開いたときのスタイル調整 */
+.form-select option {
+  background-color: var(--color-background); /* ドロップダウンの背景色 */
+  color: var(--color-text-light); /* ドロップダウンの文字色 */
+}
+
+/* ドロップダウンの項目にホバーしたときのスタイル */
+.form-select option:hover {
+  background-color: var(--color-primary); /* ホバー時の背景色 */
+  color: white; /* ホバー時の文字色 */
+}
+
+/* 選択されている項目 (一部ブラウザで適用) */
+.form-select option:checked {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .likert-scale {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .scale-label {
+    min-width: auto;
+  }
+  
+  .scale-options {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .survey-section {
+    padding: 1.5rem;
+  }
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.notification-success {
+    background: linear-gradient(135deg, var(--color-success), #10a971);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+.notification-info {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.notification-error {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+}
