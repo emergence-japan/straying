@@ -1,7 +1,7 @@
 {
   "name": "MTM",
   "version": "1.0.0",
-  "description": "This is the first phase of the Dice of Destiny web application. It includes the basic HTML structure, CSS styling, and JavaScript navigation.",
+  "description": "This is the first phase of the Straying web application. It includes the basic HTML structure, CSS styling, and JavaScript navigation.",
   "main": "index.js",
   "scripts": {
     "test": "jest"
